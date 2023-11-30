@@ -1,5 +1,8 @@
-@extends('auth.layouts')
+@extends('layouts.main')
 
+@section('title')
+    Log in
+@endsection
 @section('content')
 
 <div class="row justify-content-center mt-5">
