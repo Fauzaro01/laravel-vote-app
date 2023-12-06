@@ -9,9 +9,10 @@ class Vote extends Model
 {
     use HasFactory;
 
-    protected $table = 'Vote';
+    protected $table = 'votes';
     protected $primaryKey = 'id';
-    protected $timestamps = false;
+    protected $keyType = "string";
+    public $timestamps = false;
     protected $fillable = [
         'id', 'name', 'value', 'post_id'
     ];

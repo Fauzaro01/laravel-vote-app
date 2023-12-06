@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,13 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
+});
+
+Route::prefix('vote')->controller(PostController::class)->group(function () {
+    // For Debug /vote 
+    Route::get('/', 'index')->name('vote');
+
+    // Fix Added
+    Route::get('/create', 'showform')->name('vote.create');
+    Route::post('/store', 'store')->name('vote.store');  
 });

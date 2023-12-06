@@ -9,14 +9,16 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $table = 'Post';
-    protected $primarykey = 'string';
-    protected $timestamps = false;
+    protected $table = 'posts';
+    protected $primaryKey = 'id';
+    protected $keyType = "string";
+    public $timestamps = false;
     protected $fillable = [
         'id', 'title', 'content', 'user_id'
     ];
 
-    public function votes () {
-        return $this->hasMany(Vote::class);
-    }
+    public function votes()
+{
+    return $this->hasMany(Vote::class);
+}
 }
