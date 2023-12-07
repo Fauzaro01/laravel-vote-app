@@ -12,6 +12,7 @@ class Vote extends Model
     protected $table = 'votes';
     protected $primaryKey = 'id';
     protected $keyType = "string";
+    protected $increment = false;
     public $timestamps = false;
     protected $fillable = [
         'id', 'name', 'value', 'post_id'

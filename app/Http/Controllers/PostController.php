@@ -40,27 +40,29 @@ class PostController extends Controller
             'options' => "required|array"
         ]);
         
-        $post_id = Str::random(13);
-        $dataku = [];
-        foreach($request->options as $value) {
-            $dataku[] = [
-                'id' => Str::random(13),
-                'name' => $value,
-                'value' => 0,
-                'post_id' => $post_id
-            ];
-        }
-
         $postingan = Post::create([
-            'id' => $post_id,
+            'id' => Str::random(13),
             'title' => $request->title,
             'content'=> $request->content,
             'user_id'=> Auth::user()->id
-        ]);
+        ]); 
 
-        $postingan->votes()->createMany($dataku);
+        var_dump($postingan->id);
+        // $dataku = [];
+        // foreach($request->options as $value) {
+        //     $dataku[] = [
+        //         'id' => Str::random(13),
+        //         'name' => $value,
+        //         'value' => 0,
+        //         'post_id' => $postingan->id
 
-        return response($dataku);
+        //     ];
+        // }
+
+
+        // $postingan->votes()->createMany($dataku);
+
+        // return response($dataku);
 
     }
 
