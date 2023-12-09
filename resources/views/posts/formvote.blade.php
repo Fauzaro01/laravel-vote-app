@@ -73,11 +73,14 @@
 
       // Kirim data dengan metode POST menggunakan AJAX
       const xhr = new XMLHttpRequest();
-      xhr.open('POST', "http://localhost:8000/vote/store", true);
+      xhr.open('POST', "{{route('vote.store')}}", true);
       xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
           // Handle response jika diperlukan
           console.log(xhr.responseText);
+          // Redirect ke halaman lain
+          window.location.href = "{{route('vote')}}";
+
         }
       };
 

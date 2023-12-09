@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function test(Request $request)
     {
@@ -21,17 +25,15 @@ class PostController extends Controller
 
     public function index() {
 
-        return  view('posts.index');
+        return view('posts.index');
     }
 
     public function showform() {
-        $this->middleware('auth');
         $this->middleware('role:admin');
         return view('posts.formvote');
     }
 
     public function store(Request $request) {
-        $this->middleware('auth');
         $this->middleware('role:admin');
         
         $request->validate([
@@ -47,22 +49,20 @@ class PostController extends Controller
             'user_id'=> Auth::user()->id
         ]); 
 
-        var_dump($postingan->id);
-        // $dataku = [];
-        // foreach($request->options as $value) {
-        //     $dataku[] = [
-        //         'id' => Str::random(13),
-        //         'name' => $value,
-        //         'value' => 0,
-        //         'post_id' => $postingan->id
+        $dataku = [];
+        foreach($request->options as $value) {
+            $dataku[] = [
+                'id' => Str::random(13),
+                'name' => $value,
+                'value' => 0,
+                'post_id' => $postingan->getAttribute('id')
 
-        //     ];
-        // }
+            ];
+        }
 
+        $postingan->votes()->createMany($dataku);
 
-        // $postingan->votes()->createMany($dataku);
-
-        // return response($dataku);
+        return response()->json(["msg" => "Berhasil Bro :D"]);
 
     }
 
