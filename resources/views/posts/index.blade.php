@@ -5,34 +5,28 @@ Create VotePost
 @endsection
 
 @section('content')
-<div class="header">
-    <div class="card text-dark bg-light mb-3">
-        <div class="card-header"></div>
-        <div class="card-body">
-            <h5 class="card-title">Vote Title</h5>
-            <p class="card-text">Bla bla bla (Opsional)</p>
-        </div>
-        <div class="card-footer"></div>
+<div class="container">
+        <h2>Daftar Vote Sedang Berlangsung</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($votePosts as $votePost)
+                    <tr>
+                        <td>{{ $votePost->title }}</td>
+                        <td>{{ $votePost->content }}</td>
+                        <td>
+                            <a href="#" class="btn btn-outline-dark">Details</a>
+                            <a href="#" class="btn btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-4 m-auto">
-        <div class="card">
-            <div class="card-body m-auto">
-                <h5 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. </h5>
-
-                <a href="#" class="btn btn-primary disabled">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4  m-auto">
-        <div class="card">
-            <div class="card-body m-auto">
-                <h5 class="card-title">Special title treatment</h5>
-
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
