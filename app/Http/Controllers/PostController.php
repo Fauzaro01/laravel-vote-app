@@ -15,17 +15,13 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
-    public function test(Request $request)
-    {
-        // Menampilkan semua data yang dikirim dari client
-        $allData = $request->all();
-
-        return response()->json(['data' => $allData]);
+    public function test() {
+        return "Hello World 200!";
     }
 
     public function index() {
-
-        return view('posts.index');
+        $votePosts = Post::all();
+        return view('posts.index', compact('votePosts'));
     }
 
     public function showform() {
@@ -39,9 +35,10 @@ class PostController extends Controller
         $request->validate([
             'title' => "required|min:4",
             'content' => "required|min:4",
-            'options' => "required|array"
+            'options' => "required|array|max:5"
         ]);
-        
+
+    
         $postingan = Post::create([
             'id' => Str::random(13),
             'title' => $request->title,

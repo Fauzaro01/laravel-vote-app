@@ -5,28 +5,26 @@ Create VotePost
 @endsection
 
 @section('content')
-<div class="container">
-        <h2>Daftar Vote Sedang Berlangsung</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($votePosts as $votePost)
-                    <tr>
-                        <td>{{ $votePost->title }}</td>
-                        <td>{{ $votePost->content }}</td>
-                        <td>
-                            <a href="#" class="btn btn-outline-dark">Details</a>
-                            <a href="#" class="btn btn-outline-danger">Delete</a>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+<div class="container overflow-auto">
+    <div class="row gy-5">
+        @foreach($votePosts as $value)
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{$value->title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Creator: {{$value->user->username}}</h6>
+                    <p class="card-text">
+                        @if(strlen($value->content) > 100)
+                            {{strlen($value->content, 0, 85). "..."}}
+                        @else
+                            {{$value->content}}
+                        @endif
+                    </p>
+                    <a href="#" class="btn  btn-sm btn-outline-dark">View</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
     </div>
+</div>
 @endsection

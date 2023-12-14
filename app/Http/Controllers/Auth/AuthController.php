@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -56,9 +57,13 @@ class AuthController extends Controller
     
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            $msg = "Selamat Datang Kembali";
+            if (auth()->user()->role == "admin") {
+                $msg .= " Sepuh ".auth()->user()->username;
+            }
     
             return redirect()->intended(route('dashboard'))
-                ->withSuccess('You have successfully logged in!');
+                ->withSuccess($msg);
         }
     
         return back()->withErrors([
@@ -70,12 +75,13 @@ class AuthController extends Controller
     {
         if(Auth::check())
         {
-            return view('auth.dashboard');
+            $posts = Post::all();
+            return view('auth.dashboard', compact('posts'));
         }
 
         return redirect()->route('login')
             ->withErrors([
-            'email' => 'Please login to access the dashboard.',
+            'email' => 'Minimal Login dulu ya bre',
         ])->onlyInput('email');
     }
 
