@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('votes', function (Blueprint $table) {
             $table->string('id', 13)->primary();
             $table->string('name');
-            $table->integer('value');
+            $table->integer('value')->default(0);
             $table->string('post_id', 13);
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
