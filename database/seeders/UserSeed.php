@@ -20,6 +20,12 @@ class UserSeed extends Seeder
             'email' => 'muhamadfauzan4750@gmail.com',
             'password' => 'admin123',
             'role' => 'admin'
+        ],[
+            'id' => Str::random(13),
+            'username' => "zarory",
+            'email' => 'zarory01@gmail.com',
+            'password' => 'member123',
+            'role' => 'member'
         ]);
     }
 }
