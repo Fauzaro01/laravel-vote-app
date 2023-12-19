@@ -5,7 +5,7 @@ Create VotePost
 @endsection
 
 @section('content')
-<div class="container overflow-auto">
+<div class="container mt-2 overflow-auto">
     <div class="row gy-5">
         @foreach($votePosts as $value)
         <div class="col-6">
@@ -15,7 +15,7 @@ Create VotePost
                     <h6 class="card-subtitle mb-2 text-muted">Creator: {{$value->user->username}}</h6>
                     <p class="card-text">
                         @if(strlen($value->content) > 100)
-                            {{strlen($value->content, 0, 85). "..."}}
+                            {{substr($value->content, 0, 85). "..."}}
                         @else
                             {{$value->content}}
                         @endif
