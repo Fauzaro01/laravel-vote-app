@@ -50,7 +50,6 @@
       optionInput.className = 'form-control mt-1';
       optionInput.required = true;
       optionInput.placeholder = `Opsi ${number}`
-      // optionsContainer.insertBefore(optionInput, optionsContainer.lastElementChild);
       optionsContainer.appendChild(optionInput)
     }
 
