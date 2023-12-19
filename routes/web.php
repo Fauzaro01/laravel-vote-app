@@ -34,6 +34,7 @@ Route::controller(AuthController::class)->group(function () {
 Route::prefix('vote')->controller(PostController::class)->group(function () {
     // For Debug /vote 
     Route::get('/', 'index')->name('vote');
+    Route::get('/test', 'test')->name('vote.test');
     
     Route::get('/create', 'showform')->name('vote.create');
     Route::post('/store', 'store')->name('vote.store');
