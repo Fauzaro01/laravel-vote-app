@@ -47,8 +47,8 @@ Dashboard
                                         <td>{{$value->content}}</td>
                                         <td>{{$value->user->username}}</td>
                                         <td>
-                                            <a href="#" class="btn btn-dark">View</a>
-                                            <a href="#" class="btn btn-outline-danger">Delete</a>
+                                            <a href="{{route('vote.show', $value->id)}}" class="btn btn-block btn-dark">View</a>
+                                            <a href="#" class="btn btn-sm btn-outline-danger">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
