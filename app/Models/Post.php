@@ -20,7 +20,7 @@ class Post extends Model
 
     public function votes()
 {
-    return $this->hasMany(Vote::class);
+    return $this->hasMany(Vote::class, 'post_id');
 }
 
 public function user()
