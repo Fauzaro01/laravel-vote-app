@@ -49,4 +49,15 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function hasVoted($postId)
+    {
+        return $this->postVotes()
+            ->where('post_id', $postId)
+            ->exists();
+    }
+
+    public function postVotes()
+    {
+        return $this->hasMany(PostVote::class, 'user_id');
+    }
 }
