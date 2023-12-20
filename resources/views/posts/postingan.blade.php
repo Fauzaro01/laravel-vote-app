@@ -26,18 +26,22 @@ VotePost
             <section class="mb-5">
                 <div class="card bg-light">
                     <div class="card-body">
-                    <form method="post" action="{{ route('vote') }}">
+                    <form method="post" action="{{ route('vote.send') }}">
                             @csrf
                             <input type="hidden" name="post_id" value="{{ $data->id }}">
 
                             <div class="form-group">
-                                <label for="candidate_id">Pilih Kandidat:</label>
-                                <select name="candidate_id" id="candidate_id" class="form-control">
+                                <label for="vote_id">Pilih Kandidat:</label>
+                                <select name="vote_id" id="vote_id" class="form-control">
                                     @foreach($data->votes as $candidate)
                                         <option value="{{ $candidate->id }}">{{ $candidate->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
+
+                            @if(auth()->user()->hasVoted($data->id))
+                                <h3>Udah Vote Cuy</h3>
+                            @endif
 
                             <button type="submit" class="btn btn-primary">Vote</button>
                         </form>
@@ -50,7 +54,7 @@ VotePost
             <!-- Side widget-->
             <div class="card mb-4">
                 <div class="card-header">Qoutes of The Day</div>
-                <div class="card-body">"Dan janganlah engkau berjalan di bumi ini dengan sombong, karena sesungguhnya engkau tidak akan dapat menembus bumi dan tidak akan mampu menjulang setinggi gunung." (QS. Al-Isra: 37)</div>
+                <div class="card-body">“Maka sesungguhnya bersama kesulitan ada kemudahan,” &ndash;  Q.S Al-insyirah (94:5).</div>
             </div>
         </div>
     </div>
