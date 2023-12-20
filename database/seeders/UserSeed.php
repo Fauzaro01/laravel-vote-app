@@ -14,18 +14,21 @@ class UserSeed extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'id' => Str::random(13),
-            'username' => "fauzaro01",
-            'email' => 'muhamadfauzan4750@gmail.com',
-            'password' => 'admin123',
-            'role' => 'admin'
-        ],[
-            'id' => Str::random(13),
-            'username' => "zarory",
-            'email' => 'zarory01@gmail.com',
-            'password' => 'member123',
-            'role' => 'member'
-        ]);
+        $users = [
+            [
+                'id' => Str::random(13),
+                'username' => "fauzaro01",
+                'email' => 'muhamadfauzan4750@gmail.com',
+                'password' => 'admin123',
+                'role' => 'admin'
+            ],[
+                'id' => Str::random(13),
+                'username' => "zarory",
+                'email' => 'zarory01@gmail.com',
+                'password' => 'member123',
+                'role' => 'member'
+            ]
+        ];
+        User::createMany($users);
     }
 }
