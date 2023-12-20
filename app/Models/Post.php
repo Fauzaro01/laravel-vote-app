@@ -11,9 +11,8 @@ class Post extends Model
 
     protected $table = 'posts';
     protected $primaryKey = 'id';
-    public $incrementing = false; // non-incrementing
+    public $incrementing = false;
     protected $keyType = 'string';
-    public $timestamps = false;
     protected $fillable = [
         'id', 'title', 'content', 'user_id'
     ];
