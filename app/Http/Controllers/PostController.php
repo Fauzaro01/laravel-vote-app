@@ -86,8 +86,10 @@ class PostController extends Controller
 
         // Logika pemrosesan suara
         $postVote = new PostVote([
+            'id' => Str::random(13),
             'user_id' => auth()->id(),
             'vote_id' => $request->vote_id,
+            'post_id' => $request->post_id
         ]);
         $postVote->save();
 
