@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('content', 1000);
             $table->string('user_id', 13);
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->timestamps();
         });
     }
 
