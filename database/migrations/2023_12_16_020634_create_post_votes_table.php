@@ -15,8 +15,11 @@ return new class extends Migration
             $table->string('id', 13)->primary();
             $table->string('user_id', 13);
             $table->string('vote_id', 13);
+            $table->string('post_id', 13);
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('vote_id')->references('id')->on('votes');
+            $table->foreign('post_id')->references('id')->on('posts');
+            $table->timestamps();
         });
     }
     
