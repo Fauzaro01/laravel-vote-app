@@ -12,7 +12,7 @@ Create VotePost
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{$value->title}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Creator: {{$value->user->username}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Author {{$value->user->username}}, created at {{$value->created_at->format('d-m-Y')}}</h6>
                     <p class="card-text">
                         @if(strlen($value->content) > 100)
                             {{substr($value->content, 0, 85). "..."}}
@@ -20,7 +20,7 @@ Create VotePost
                             {{$value->content}}
                         @endif
                     </p>
-                    <a href="#" class="btn  btn-sm btn-outline-dark">View</a>
+                    <a href="{{route('vote.show', $value->id)}}" class="btn btn-outline-dark">View</a>
                 </div>
             </div>
         </div>
