@@ -41,16 +41,16 @@ Dashboard
                             </thead>
                             <tbody>
                                 @foreach($posts as $value)
-                                    <tr>
-                                        <th scope="row">{{$value->id}}</th>
-                                        <td>{{$value->title}}</td>
-                                        <td>{{$value->content}}</td>
-                                        <td>{{$value->user->username}}</td>
-                                        <td>
-                                            <a href="{{route('vote.show', $value->id)}}" class="btn btn-block btn-dark">View</a>
-                                            <a href="#" class="btn btn-sm btn-outline-danger">Delete</a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <th scope="row">{{$value->id}}</th>
+                                    <td>{{$value->title}}</td>
+                                    <td>{{$value->content}}</td>
+                                    <td>{{$value->user->username}}</td>
+                                    <td>
+                                        <a href="{{route('vote.show', $value->id)}}" class="btn btn-block btn-dark">View</a>
+                                        <a href="#" class="btn btn-sm btn-outline-danger">Delete</a>
+                                    </td>
+                                </tr>
                                 @endforeach
 
                             </tbody>
@@ -63,6 +63,9 @@ Dashboard
                     <p>Salam sahabat yang terhormat,
                         Kami mengucapkan terima kasih atas partisipasi Anda dalam sesi pemilihan ini. <br> Sebagai bagian dari proses demokrasi, Anda memiliki kesempatan untuk memberikan suara pada berbagai postingan yang telah disediakan di bawah ini.
                     </p>
+                    <div class="alert alert-success">
+                        <p>Maaf Postingannya agar sedikit lebih banyak jadi silahkan masuk ke link <a class="btn btn-sm btn-dark" href="{{route('vote')}}">Click Saya</a></p>
+                    </div>
                 </div>
                 @endif
             </div>
