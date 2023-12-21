@@ -26,10 +26,18 @@ VotePost
             <section class="mb-5">
                 <div class="card bg-light">
                     <div class="card-body">
+                    @if(auth()->user()->hasVoted($data->id))
+                            <h3>Terima kasih telah mengikuti pemilihan suara!</h3>
+                            <dl>
+                                <dt>Anda bisa langsung melihat hasilnya di tombol bawah ini</dt>
+                                <dd>Pemilihan anda akan otomatis terhitung ke server kami</dd>
+                                <a class="btn btn-outline-dark" href="{{route('vote.result',$data->id)}}">Click Saya</a>
+                            </dl>
+                    @else
+                    
                     <form method="post" action="{{ route('vote.send') }}">
                             @csrf
                             <input type="hidden" name="post_id" value="{{ $data->id }}">
-
                             <div class="form-group">
                                 <label for="vote_id">Pilih Kandidat:</label>
                                 <select name="vote_id" id="vote_id" class="form-control">
@@ -38,13 +46,10 @@ VotePost
                                     @endforeach
                                 </select>
                             </div>
-
-                            @if(auth()->user()->hasVoted($data->id))
-                                <h3>Udah Vote Cuy</h3>
-                            @endif
-
+                            <br>
                             <button type="submit" class="btn btn-primary">Vote</button>
                         </form>
+                    @endif
                     </div>
                 </div>
             </section>
