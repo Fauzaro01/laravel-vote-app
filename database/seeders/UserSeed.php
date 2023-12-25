@@ -29,6 +29,6 @@ class UserSeed extends Seeder
                 'role' => 'member'
             ]
         ];
-        User::createMany($users);
+        User::insert($users);
     }
 }
