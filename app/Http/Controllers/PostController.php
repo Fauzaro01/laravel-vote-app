@@ -19,7 +19,7 @@ class PostController extends Controller
 
     public function test()
     {   
-        $post = Post::find('vdiRMiXdBMJPQ');
+        $post = Post::find('isiklaumaudebugging');
         return view('test.index', compact('post'));
     }
 
