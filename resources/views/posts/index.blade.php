@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-Create VotePost
+Daftar Postingan Vote
 @endsection
 
 @section('content')
