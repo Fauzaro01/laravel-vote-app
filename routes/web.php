@@ -39,6 +39,6 @@ Route::prefix('vote')->controller(PostController::class)->group(function () {
     Route::get('/create', 'showform')->name('vote.create');
     Route::post('/store', 'store')->name('vote.store');
     
-    Route::get('/result', 'result')->name('vote.result');
+    Route::get('/result/{id}', 'result')->name('vote.result');
     Route::post('/send', 'votepost')->name('vote.send');
 });

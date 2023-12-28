@@ -19,8 +19,8 @@ class PostController extends Controller
 
     public function test()
     {   
-        $votePosts = Post::find('');
-        return view('test.index');
+        $post = Post::find('vdiRMiXdBMJPQ');
+        return view('test.index', compact('post'));
     }
 
     public function index()
@@ -98,6 +98,11 @@ class PostController extends Controller
         $vote->increment('value');
 
         return redirect()->back()->with('success', 'Suara Anda telah tercatat!');
+    }
+
+    public function result($id) {
+        $post = Post::find($id);
+        return view('posts.result', compact('post'));
     }
 
 }
