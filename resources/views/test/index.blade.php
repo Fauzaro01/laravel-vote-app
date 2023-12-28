@@ -27,7 +27,7 @@
 
     <form id="formSaya" action="{{route('vote.send')}}" method="post">
         @csrf
-        <input type="hidden" name="post_id" value="{{$post_id}}">
+        <input type="hidden" name="post_id" value="{{$post->id}}">
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
@@ -41,7 +41,7 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             // data sementara
-            var db = {};
+            var db;
 
             // Menangani klick pada tombol submit
 
@@ -62,7 +62,7 @@
                     var selectedOption = this.getAttribute('data-row');
                     console.log('value', button.value)
                     console.log('Tombol ' + selectedOption + ' ditekan');
-                    db = 
+                    db = button.id
                     toggleOpsiButton();
                     displayResult(selectedOption);
                 });
