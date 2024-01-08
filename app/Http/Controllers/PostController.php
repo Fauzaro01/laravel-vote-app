@@ -15,6 +15,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:admin')->only(['showform', 'store']);
     }
 
     public function test()
@@ -31,14 +32,11 @@ class PostController extends Controller
 
     public function showform()
     {
-        $this->middleware('role:admin');
         return view('posts.formvote');
     }
 
     public function store(Request $request)
     {
-        $this->middleware('role:admin');
-
         $request->validate([
             'title' => "required|min:4",
             'content' => "required|min:4",

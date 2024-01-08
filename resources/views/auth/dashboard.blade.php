@@ -24,14 +24,14 @@ Dashboard
                 @if($user->role == "admin")
                 <div class="card">
                     <div class="card-header">
-                        Welcome Role Sepuh :D
+                        Selamat Datang Admin
                     </div>
                     <div class="body">
-                        <p>Detail: {{$user}} </p>
+                        <a href="{{route('vote.create')}}" class="btn btn-dark"><i class="bi bi-plus-circle">Tambah Sesi Vote baru</i></a>
                         <table class="table table-striped">
                             <thead class="table-dark">
                                 <h5>Daftar List Postingan</h5>
-                                <tr>
+                                <tr>    
                                     <th scope="col">No ID</th>
                                     <th scope="col">Judul</th>
                                     <th scope="col">Deskripsi</th>
@@ -64,7 +64,7 @@ Dashboard
                         Kami mengucapkan terima kasih atas partisipasi Anda dalam sesi pemilihan ini. <br> Sebagai bagian dari proses demokrasi, Anda memiliki kesempatan untuk memberikan suara pada berbagai postingan yang telah disediakan di bawah ini.
                     </p>
                     <div class="alert alert-success">
-                        <p>Maaf Postingannya agar sedikit lebih banyak jadi silahkan masuk ke link <a class="btn btn-sm btn-dark" href="{{route('vote')}}">Click Saya</a></p>
+                        <p>Maaf Postingannya sementara di pindahkan silahkan tekan tombolnya <a class="btn btn-sm btn-dark" href="{{route('vote')}}">Click Saya</a></p>
                     </div>
                 </div>
                 @endif
