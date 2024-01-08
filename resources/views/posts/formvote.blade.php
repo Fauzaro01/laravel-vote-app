@@ -10,7 +10,7 @@
       <div class="card">
         <div class="card-header">Vote Form</div>
         <div class="card-body">
-          <form id="voteForm">
+          <form id="voteForm" action="{{route('vote.store')}}" method="post">
             @csrf
             <div class="mb-3">
               <label class="form-label" for="titleVote">Title Vote</label>
@@ -54,36 +54,11 @@
     }
 
     function removeOption() {
-      optionsContainer.remove();
-      // Perbarui nomor hint pada input yang tersisa
-      const inputFields = document.querySelectorAll('.opsi');
-            inputFields.forEach((input, index) => {
-                input.placeholder = `Input ${index + 1}`;
-            });
-
-            // Kurangi jumlah inputCount
-            number--;
+      var lastInput = optionsContainer.lastChild;
+      if (number > 1) {
+        number--
+        optionsContainer.removeChild(lastInput);
+      }
     }
-
-    document.getElementById('voteForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const formData = new FormData(this);
-
-      // Kirim data dengan metode POST menggunakan AJAX
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', "{{route('vote.store')}}", true);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          // Handle response jika diperlukan
-          console.log(xhr.responseText);
-          // Redirect ke halaman lain
-          window.location.href = "{{route('vote')}}";
-
-        }
-      };
-
-      xhr.send(formData);
-    });
   </script>
 @endsection

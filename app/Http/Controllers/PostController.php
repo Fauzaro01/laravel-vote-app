@@ -66,7 +66,7 @@ class PostController extends Controller
 
         $postingan->votes()->createMany($dataku);
 
-        return response()->json(["msg" => "Berhasil Bro :D"]);
+        return redirect()->route('vote');
     }
 
     public function votepost(Request $request)
