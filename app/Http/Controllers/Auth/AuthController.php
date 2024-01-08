@@ -58,9 +58,6 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             $msg = "Selamat Datang Kembali";
-            if (auth()->user()->role == "admin") {
-                $msg .= " Sepuh ".auth()->user()->username;
-            }
     
             return redirect()->intended(route('dashboard'))
                 ->withSuccess($msg);
